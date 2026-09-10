@@ -7,56 +7,90 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <div>
-            <a href="index.html"> offres</a>
+
+    <header class="header">
+        <div class="header-container">
+
+            <a class="logo" href="index.html">MERN Jobs</a>
+
             <nav>
-                <ul>
+                <ul class="nav-list">
                     <li><a href="index.html">offres</a></li>
                     <li><a href="offres-suivies.html">offres suivies</a></li>
                     <li><a href="deposer-offre.html">deposer une offre</a></li>
                 </ul>
             </nav>
+
         </div>
     </header>
 
     <main>
-        <a href="index.html">retour aux offres</a>
-        <div>
-            <article>
-                <div>
-                    <h1>developpeur fullstack MERN (H/F)</h1>
-                    <span>stage</span>
+
+        <a class="back-link" href="index.html">retour aux offres</a>
+
+        <div class="job-detail">
+
+            <article class="job-detail-content">
+
+                <div class="job-detail-header">
+                    <div>
+                        <h1>developpeur fullstack MERN (H/F)</h1>
+                        <span class="job-type">stage</span>
+                    </div>
                 </div>
-                <p>
-                    <strong>Entreprise :</strong> TechCorp | <strong>Ville :</strong> Casablanca | <strong>Publié le :</strong> 10 Avril 2026
+
+                <p class="job-info">
+                    <strong>Entreprise :</strong> TechCorp |
+                    <strong>Ville :</strong> Casablanca |
+                    <strong>Publié le :</strong> 10 Avril 2026
                 </p>
+
                 <h3>profile recherche</h3>
-                <ul>
+
+                <ul class="profile-list">
                     <li>bonnes bases en html, css, js et node.js</li>
                     <li>notion sur react.js en node.js / express</li>
                     <li>connaissance des bases de donnees mongoDb ou mysql</li>
                     <li>esprit d'equipe et envies d'apprendre</li>
                 </ul>
-                <button>postuler a cette offre</button>
+
+                <button class="apply-button" type="button">
+                    postuler a cette offre
+                </button>
+
             </article>
-            <aside>
+
+            <aside class="job-detail-sidebar">
+
                 <h3>technologies requises</h3>
-                <div>
+
+                <div class="technologies">
                     <span>react</span>
                     <span>node.js</span>
                     <span>mongoDb</span>
                     <span>express</span>
                 </div>
+
                 <h3>a propos de l'entreprise</h3>
-                <p>TechCorp est une agence digitale spécialisée dans le développement de solutions web modernes</p>
-                <p><a href="#">www.techcorp.ma</a></p>
+
+                <p>
+                    TechCorp est une agence digitale spécialisée dans le
+                    développement de solutions web modernes
+                </p>
+
+                <p>
+                    <a href="#">www.techcorp.ma</a>
+                </p>
+
             </aside>
+
         </div>
+
     </main>
 
     <footer>
         <p>&copy; 2026 Promotion MERN. Tous droits réservés.</p>
     </footer>
+
 </body>
 </html>
