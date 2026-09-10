@@ -370,3 +370,19 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+.followed-section h1 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.section-description {
+    color: #6b7280;
+    margin-bottom: 25px;
+}
+
+@media (max-width: 700px) {
+    .followed-section h1 {
+        font-size: 22px;
+    }
+}
