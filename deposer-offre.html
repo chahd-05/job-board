@@ -7,72 +7,118 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <div>
-            <a href="index.html">mern job</a>
+
+    <header class="header">
+        <div class="header-container">
+
+            <a class="logo" href="index.html">MERN Jobs</a>
+
             <nav>
-                <ul>
-                    <li><a href="index.html">offre</a></li>
-                    <li><a href="offre-detail.html">offre suivi</a></li>
-                    <li><a href="deposer-offre.html">depose une offre</a></li>
+                <ul class="nav-list">
+                    <li><a href="index.html">offres</a></li>
+                    <li><a href="offres-suivies.html">offres suivies</a></li>
+                    <li><a href="deposer-offre.html">deposer une offre</a></li>
                 </ul>
             </nav>
+
         </div>
     </header>
 
     <main>
-        <div>
-            <h1>deposer une oppurtunite</h1>
-            <p>Remplissez ce formulaire pour publier une offre de stage ou d'alternance</p>
 
-            <form action="#" method="post">
-                <div>
-                    <label>titre du post</label>
-                    <input type="text" placeholder=""ex: developpeur react.js jr">
+        <section class="offer-form-section">
+
+            <h1>deposer une opportunite</h1>
+
+            <p class="section-description">
+                Remplissez ce formulaire pour publier une offre de stage ou d'alternance
+            </p>
+
+            <form class="offer-form" action="#" method="post">
+
+                <div class="form-group">
+                    <label for="title">titre du poste</label>
+                    <input
+                        id="title"
+                        type="text"
+                        placeholder="ex: developpeur react.js junior"
+                    >
                 </div>
 
-                <div>
-                    <div>
-                        <label>nom de l'entreprise</label>
-                        <input type="text" placeholder="ex: techcorp">
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="company">nom de l'entreprise</label>
+                        <input
+                            id="company"
+                            type="text"
+                            placeholder="ex: techcorp"
+                        >
                     </div>
-                    <div>
-                        <label>ville</label>
-                        <input type="text" placeholder="ex: casablance">
+
+                    <div class="form-group">
+                        <label for="city">ville</label>
+                        <input
+                            id="city"
+                            type="text"
+                            placeholder="ex: casablanca"
+                        >
                     </div>
+
                 </div>
 
-                <div>
-                    <label>type de contract</label>
-                    <select>
+                <div class="form-group">
+                    <label for="contract">type de contrat</label>
+
+                    <select id="contract">
                         <option value="">selectionner</option>
-                        <option value="">stage</option>
-                        <option value="">alternance</option>
+                        <option value="stage">stage</option>
+                        <option value="alternance">alternance</option>
                     </select>
                 </div>
 
-                <div>
-                    <label>Technologies principales</label>
-                    <input type="text" placeholder="ex: react, node.js, mongodb">
+                <div class="form-group">
+                    <label for="technologies">Technologies principales</label>
+
+                    <input
+                        id="technologies"
+                        type="text"
+                        placeholder="ex: react, node.js, mongodb"
+                    >
                 </div>
 
-                <div>
-          <label>Description de la mission *</label>
-          <textarea placeholder="Décrivez les tâches et objectifs du poste..."></textarea>
-        </div>
+                <div class="form-group">
+                    <label for="description">Description de la mission *</label>
 
-                <div>
-                    <label>Lien ou Email de candidature</label>
-                    <input type="text" placeholder="ex: RH@techcorp.ma ou https://link.com">
+                    <textarea
+                        id="description"
+                        placeholder="Décrivez les tâches et objectifs du poste..."
+                    ></textarea>
                 </div>
 
-                <button type="submit">public l'offre</button>
+                <div class="form-group">
+                    <label for="application">Lien ou Email de candidature</label>
+
+                    <input
+                        id="application"
+                        type="text"
+                        placeholder="ex: RH@techcorp.ma ou https://link.com"
+                    >
+                </div>
+
+                <button class="submit-button" type="submit">
+                    publier l'offre
+                </button>
+
             </form>
-        </div>
+
+        </section>
+
     </main>
 
     <footer>
         <p>&copy; 2026 Promotion MERN. Tous droits réservés.</p>
     </footer>
+
 </body>
 </html>
