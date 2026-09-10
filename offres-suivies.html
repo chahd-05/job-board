@@ -7,54 +7,76 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-        <header>
-            <div>
-                <a href="index.html">mern jobs</a>
-                <nav>
-                    <ul>
-                        <li><a href="index.html">offres</a></li>
-                        <li><a href="offres-suivies.html">offres suivies</a></li>
-                        <li><a href="deposer-offre.html">deposer une offre</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
 
-        <main>
-            <section>
-                <h1>mes offres suivies</h1>
-                <p>Retrouvez ici la liste des opportunités que vous avez sauvegardées</p>
+    <header class="header">
+        <div class="header-container">
 
-                <div>
-                    <article>
-                        <div>
-                            <div>
-                                <h3>developpeur fullstack mern (H/F)</h3>
-                                <p>techcorp-casablanca</p>
-                            </div>
-                            <span>stage</span>
-                        </div>
+            <a class="logo" href="index.html">MERN Jobs</a>
 
-                        <div>
-                            <span>react</span>
-                            <span>node.js</span>
-                        </div>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="index.html">offres</a></li>
+                    <li><a href="offres-suivies.html">offres suivies</a></li>
+                    <li><a href="deposer-offre.html">deposer une offre</a></li>
+                </ul>
+            </nav>
 
-                        <div>
-                            <small>ajouter aux favoris</small>
+        </div>
+    </header>
 
-                            <div>
-                                <button>retirer</button>
-                                <a href="offre-detail.html">voir le detail</a>
-                            </div>
-                        </div>
-                    </article>
+    <main>
+
+        <section class="followed-section">
+
+            <h1>mes offres suivies</h1>
+
+            <p class="section-description">
+                Retrouvez ici la liste des opportunités que vous avez sauvegardées
+            </p>
+
+            <article class="job-card">
+
+                <div class="job-header">
+
+                    <div>
+                        <h3>developpeur fullstack mern (H/F)</h3>
+                        <p>TechCorp — Casablanca</p>
+                    </div>
+
+                    <span class="job-type">stage</span>
+
                 </div>
-            </section>
-        </main>
 
-        <footer>
-            <p>&copy; 2026 Promotion MERN. Tous droits réservés.</p>
-        </footer>
+                <div class="technologies">
+                    <span>react</span>
+                    <span>node.js</span>
+                </div>
+
+                <div class="job-footer">
+
+                    <small>ajouter aux favoris</small>
+
+                    <div>
+                        <button class="follow-button" type="button">
+                            retirer
+                        </button>
+
+                        <a class="details-button" href="offre-detail.html">
+                            voir le detail
+                        </a>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Promotion MERN. Tous droits réservés.</p>
+    </footer>
+
 </body>
 </html>
