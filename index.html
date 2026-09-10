@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portail MERN Jobs — Accueil & Offres</title>
+</head>
+<body>
+    <header>
+        <div>
+            <a href="index.html">MERN Jobs</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">offres</a></li>
+                    <li><a href="offres-suivies.html">offres suivies</a></li>
+                    <li><a href="offre-detail.html">deposer une offre</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2>rechercher et filtrer les offres</h2>
+
+            <form action="#">
+                <input type="text" placeholder="Mot-clé (titre, entreprise...)">
+
+        <select>
+            <option value="">toutes les villes</option>
+            <option value="casablance">casablance</option>
+            <option value="rabat">rabat</option>
+            <option value="tanger">tanger</option>
+        </select>
+
+        <select>
+            <option value="">Toutes les techs</option>
+            <option value="React">React</option>
+            <option value="Node.js">Node.js</option>
+            <option value="MongoDB">MongoDB</option>
+            <option value="MySQL">MySQL</option>
+        </select>
+
+        <select style="flex: 1; min-width: 140px; padding: 0.6rem; border: 1px solid var(--border-color); border-radius: 4px;">
+          <option value="">Type de contrat</option>
+          <option value="Stage">Stage</option>
+          <option value="Alternance">Alternance</option>
+        </select>
+
+        <button type="submit"></button>
+
+        </form>
+        </section>
+
+        <div>
+            <h1>offre disponibles <span>(3 opportunités)</span></h1>
+            <div>
+                <label for="sort">trier par: </label>
+                <select id="sort">
+                    <option value="recent">plus recents</option>
+                    <option value="oldest">plus anciennes</option>
+                </select>
+            </div>
+        </div>
+
+        <article>
+            <div>
+                <div>
+                    <h3>developpeur fullstack mern (H/F)</h3>
+                    <p>TechCorp — Casablanca</p>
+                </div>
+                <span>stage</span>
+            </div>
+            <p>Nous recherchons un stagiaire passionné par la stack MERN pour participer à la conception et au développement de nos applications web internes</p>
+
+            <div>
+                <span>React</span>
+                <span>Node.js</span>
+                <span>MongoDB</span>
+                <span>Express</span>
+            </div>
+
+            <div>
+                <small>Publié le 10 Septembre 2026</small>
+                <div>
+                    <button>suivre</button>
+                    <a href="offre-detail.html">consulter</a>
+                </div>
+            </div>
+        </article>
+
+        <article>
+            <div>
+                <div>
+                    <h3>Développeur Frontend React.js</h3>
+                    <p>WebAgency — Rabat</p>
+                </div>
+                <span>alternance</span>
+            </div>
+
+            <p>Intégrez notre équipe frontend pour concevoir des interfaces utilisateur modernes, réactives et performantes avec React et Webpack.</p>
+
+            <div>
+                <span>React</span>
+                <span>JavaScript</span>
+                <span>CSS Grid</span>
+            </div>
+
+            <div>
+                <small>Publié le 08 Septembre 2026</small>
+                <div>
+                    <button>suivre</button>
+                    <a href="offre-detail.html">consulter</a>
+                </div>
+            </div>
+        </article>
+
+        <article>
+            <div>
+                <div>
+                    <h3>Développeur Backend Node.js / MySQL</h3>
+                    <p>DataSolutions — Tanger</p>
+                </div>
+                <span>Stage</span>
+            </div>
+            <p>Développement d'APIs REST sécurisées et gestion de bases de données relationnelles pour nos clients grands comptes.</p>
+
+            <div>
+                <span>Node.js</span>
+                <span>Express</span>
+                <span>MySQL</span>
+            </div>
+
+            <div>
+                <small>Publié le 05 Septembre 2026</small>
+
+                <div>
+                    <button>suivre</button>
+                    <a href="offre-detail.html">consulter</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Promotion MERN. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
