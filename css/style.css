@@ -1,3 +1,20 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #f8fafc;
+    color: #1f2937;
+    font-family: Arial, sans-serif;
+}
+
+main {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
 .header {
     background-color: #ffffff;
     border-bottom: 1px solid #e1e5e9;
@@ -24,6 +41,8 @@
     list-style: none;
     display: flex;
     gap: 25px;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-list a {
@@ -40,12 +59,16 @@
     margin-bottom: 35px;
 }
 
+.search-section h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
 .search-form {
     background-color: #ffffff;
     padding: 20px;
     border: 1px solid #e1e5e9;
     border-radius: 8px;
-
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
@@ -56,7 +79,6 @@
     padding: 11px 12px;
     border: 1px solid #d1d5db;
     border-radius: 6px;
-
     font-family: Arial, sans-serif;
     font-size: 14px;
     color: #374151;
@@ -83,15 +105,181 @@
     padding: 11px 18px;
     border: none;
     border-radius: 6px;
-
     background-color: #2563eb;
     color: #ffffff;
-
     font-size: 14px;
     cursor: pointer;
 }
 
 .search-button:hover {
     background-color: #1d4ed8;
+}
+
+.offers-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.offers-header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.offers-header h1 span {
+    color: #6b7280;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.sort {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sort .search-select {
+    min-width: 150px;
+    flex: none;
+}
+
+.job-card {
+    background-color: #ffffff;
+    border: 1px solid #e1e5e9;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.job-header h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+}
+
+.job-header p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.job-type {
+    background-color: #eff6ff;
+    color: #1d4ed8;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.job-description {
+    color: #4b5563;
+    line-height: 1.5;
+}
+
+.technologies {
+    display: flex;
+    gap: 8px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.technologies span {
+    background-color: #f3f4f6;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.job-footer {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.job-footer small {
+    color: #6b7280;
+}
+
+.follow-button {
+    padding: 8px 12px;
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.follow-button:hover {
+    background-color: #f3f4f6;
+}
+
+.details-button {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #2563eb;
     color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.details-button:hover {
+    background-color: #1d4ed8;
+}
+
+footer {
+    background-color: #ffffff;
+    border-top: 1px solid #e1e5e9;
+    text-align: center;
+    padding: 20px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+@media (max-width: 700px) {
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .offers-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .job-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .job-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .search-form {
+        flex-direction: column;
+    }
+
+    .search-input,
+    .search-select,
+    .search-button {
+        width: 100%;
+    }
 }
