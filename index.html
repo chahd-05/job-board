@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <div>
-            <a href="index.html">MERN Jobs</a>
-            <nav class="nav">
+
+    <header class="header">
+        <div class="header-container">
+            <a class="logo" href="index.html">MERN Jobs</a>
+
+            <nav>
                 <ul class="nav-list">
                     <li><a href="index.html">offres</a></li>
                     <li><a href="offres-suivies.html">offres suivies</a></li>
@@ -21,130 +23,158 @@
     </header>
 
     <main>
+
         <section class="search-section">
             <h2>rechercher et filtrer les offres</h2>
 
             <form class="search-form" action="#">
-                <input class="search-select" type="text" placeholder="Mot-clé (titre, entreprise...)">
 
-        <select class="search-select">
-            <option value="">toutes les villes</option>
-            <option value="casablance">casablance</option>
-            <option value="rabat">rabat</option>
-            <option value="tanger">tanger</option>
-        </select>
+                <input class="search-input" type="text" placeholder="Mot-clé (titre, entreprise...)">
 
-        <select class="search-select">
-            <option value="">Toutes les techs</option>
-            <option value="React">React</option>
-            <option value="Node.js">Node.js</option>
-            <option value="MongoDB">MongoDB</option>
-            <option value="MySQL">MySQL</option>
-        </select>
+                <select class="search-select">
+                    <option value="">toutes les villes</option>
+                    <option value="casablanca">casablanca</option>
+                    <option value="rabat">rabat</option>
+                    <option value="tanger">tanger</option>
+                </select>
 
-        <select class="search-select">
-          <option value="">Type de contrat</option>
-          <option value="Stage">Stage</option>
-          <option value="Alternance">Alternance</option>
-        </select>
+                <select class="search-select">
+                    <option value="">Toutes les techs</option>
+                    <option value="React">React</option>
+                    <option value="Node.js">Node.js</option>
+                    <option value="MongoDB">MongoDB</option>
+                    <option value="MySQL">MySQL</option>
+                </select>
 
-        <button class="search-button" type="submit">Search</button>
+                <select class="search-select">
+                    <option value="">Type de contrat</option>
+                    <option value="Stage">Stage</option>
+                    <option value="Alternance">Alternance</option>
+                </select>
 
-        </form>
+                <button class="search-button" type="submit">Search</button>
+
+            </form>
         </section>
 
-        <div>
-            <h1>offre disponibles <span clas>(3 opportunités)</span></h1>
-            <div>
-                <label for="sort">trier par: </label>
-                <select id="sort">
-                    <option value="recent">plus recents</option>
+        <div class="offers-header">
+            <h1>offres disponibles <span>(3 opportunités)</span></h1>
+
+            <div class="sort">
+                <label for="sort">trier par:</label>
+
+                <select class="search-select" id="sort">
+                    <option value="recent">plus récentes</option>
                     <option value="oldest">plus anciennes</option>
                 </select>
             </div>
         </div>
 
-        <article>
-            <div>
+        <article class="job-card">
+
+            <div class="job-header">
                 <div>
-                    <h3>developpeur fullstack mern (H/F)</h3>
+                    <h3>Développeur Fullstack MERN (H/F)</h3>
                     <p>TechCorp — Casablanca</p>
                 </div>
-                <span>stage</span>
-            </div>
-            <p>Nous recherchons un stagiaire passionné par la stack MERN pour participer à la conception et au développement de nos applications web internes</p>
 
-            <div>
+                <span class="job-type">Stage</span>
+            </div>
+
+            <p class="job-description">
+                Nous recherchons un stagiaire passionné par la stack MERN
+                pour participer à la conception et au développement de nos applications web internes.
+            </p>
+
+            <div class="technologies">
                 <span>React</span>
                 <span>Node.js</span>
                 <span>MongoDB</span>
                 <span>Express</span>
             </div>
 
-            <div>
+            <div class="job-footer">
                 <small>Publié le 10 Septembre 2026</small>
+
                 <div>
-                    <button>suivre</button>
-                    <a href="offre-detail.html">consulter</a>
+                    <button class="follow-button" type="button">suivre</button>
+                    <a class="details-button" href="offre-detail.html">consulter</a>
                 </div>
             </div>
+
         </article>
 
-        <article>
-            <div>
+        <article class="job-card">
+
+            <div class="job-header">
                 <div>
                     <h3>Développeur Frontend React.js</h3>
                     <p>WebAgency — Rabat</p>
                 </div>
-                <span>alternance</span>
+
+                <span class="job-type">Alternance</span>
             </div>
 
-            <p>Intégrez notre équipe frontend pour concevoir des interfaces utilisateur modernes, réactives et performantes avec React et Webpack.</p>
+            <p class="job-description">
+                Intégrez notre équipe frontend pour concevoir des interfaces
+                utilisateur modernes, réactives et performantes avec React et Webpack.
+            </p>
 
-            <div>
+            <div class="technologies">
                 <span>React</span>
                 <span>JavaScript</span>
                 <span>CSS Grid</span>
             </div>
 
-            <div>
+            <div class="job-footer">
                 <small>Publié le 08 Septembre 2026</small>
+
                 <div>
-                    <button>suivre</button>
-                    <a href="offre-detail.html">consulter</a>
+                    <button class="follow-button" type="button">suivre</button>
+                    <a class="details-button" href="offre-detail.html">consulter</a>
                 </div>
             </div>
+
         </article>
 
-        <article>
-            <div>
+        <article class="job-card">
+
+            <div class="job-header">
                 <div>
                     <h3>Développeur Backend Node.js / MySQL</h3>
                     <p>DataSolutions — Tanger</p>
                 </div>
-                <span>Stage</span>
-            </div>
-            <p>Développement d'APIs REST sécurisées et gestion de bases de données relationnelles pour nos clients grands comptes.</p>
 
-            <div>
+                <span class="job-type">Stage</span>
+            </div>
+
+            <p class="job-description">
+                Développement d'APIs REST sécurisées et gestion de bases de données
+                relationnelles pour nos clients grands comptes.
+            </p>
+
+            <div class="technologies">
                 <span>Node.js</span>
                 <span>Express</span>
                 <span>MySQL</span>
             </div>
 
-            <div>
+            <div class="job-footer">
                 <small>Publié le 05 Septembre 2026</small>
 
                 <div>
-                    <button>suivre</button>
-                    <a href="offre-detail.html">consulter</a>
+                    <button class="follow-button" type="button">suivre</button>
+                    <a class="details-button" href="offre-detail.html">consulter</a>
                 </div>
             </div>
+
         </article>
+
     </main>
 
     <footer>
         <p>&copy; 2026 Promotion MERN. Tous droits réservés.</p>
     </footer>
+
 </body>
 </html>
