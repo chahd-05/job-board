@@ -10,31 +10,31 @@
     <header>
         <div>
             <a href="index.html">MERN Jobs</a>
-            <nav>
-                <ul>
+            <nav class="nav">
+                <ul class="nav-list">
                     <li><a href="index.html">offres</a></li>
                     <li><a href="offres-suivies.html">offres suivies</a></li>
-                    <li><a href="offre-detail.html">deposer une offre</a></li>
+                    <li><a href="deposer-offre.html">deposer une offre</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <section>
+        <section class="search-section">
             <h2>rechercher et filtrer les offres</h2>
 
-            <form action="#">
-                <input type="text" placeholder="Mot-clé (titre, entreprise...)">
+            <form class="search-form" action="#">
+                <input class="search-select" type="text" placeholder="Mot-clé (titre, entreprise...)">
 
-        <select>
+        <select class="search-select">
             <option value="">toutes les villes</option>
             <option value="casablance">casablance</option>
             <option value="rabat">rabat</option>
             <option value="tanger">tanger</option>
         </select>
 
-        <select>
+        <select class="search-select">
             <option value="">Toutes les techs</option>
             <option value="React">React</option>
             <option value="Node.js">Node.js</option>
@@ -42,19 +42,19 @@
             <option value="MySQL">MySQL</option>
         </select>
 
-        <select style="flex: 1; min-width: 140px; padding: 0.6rem; border: 1px solid var(--border-color); border-radius: 4px;">
+        <select class="search-select">
           <option value="">Type de contrat</option>
           <option value="Stage">Stage</option>
           <option value="Alternance">Alternance</option>
         </select>
 
-        <button type="submit"></button>
+        <button class="search-button" type="submit">Search</button>
 
         </form>
         </section>
 
         <div>
-            <h1>offre disponibles <span>(3 opportunités)</span></h1>
+            <h1>offre disponibles <span clas>(3 opportunités)</span></h1>
             <div>
                 <label for="sort">trier par: </label>
                 <select id="sort">
