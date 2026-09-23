@@ -2,6 +2,7 @@ const express = require("express")
 const db = require("./config/db")
 
 const app = express()
+app.set("view engine", "ejs")
 
 const port = 3000
 
@@ -15,5 +16,5 @@ app.listen(port, () => {
 
 app.get("/offres", async(req, res) => {
     const [rows] = await db.execute("SELECT * FROM offre")
-    res.json(rows)
+    res.render("offres", {offers: rows})
 })
