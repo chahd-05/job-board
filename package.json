@@ -1,0 +1,30 @@
+{
+  "name": "job-board",
+  "version": "1.0.0",
+  "description": "Projet d'application web centralisant les offres de stage et d'alternance pour les apprenants de la formation Développeur Fullstack MERN.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chahd-05/job-board.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/chahd-05/job-board/issues"
+  },
+  "homepage": "https://github.com/chahd-05/job-board#readme",
+  "dependencies": {
+    "dotenv": "^18.0.2",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "mysql2": "^3.24.4"
+  }
+}
