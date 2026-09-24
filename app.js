@@ -16,5 +16,5 @@ app.listen(port, () => {
 
 app.get("/offres", async(req, res) => {
     const [rows] = await db.execute("SELECT * FROM offre")
-    res.render("offres", {offers: rows})
+    res.render("offres", {offres: rows})
 })
