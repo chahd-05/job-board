@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Liste des offres</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <h1>Liste des offres</h1>
+
+
+    <form action="/offres" method="GET">
+
+        <input
+            type="text"
+            name="search"
+            placeholder="Rechercher..."
+            value="<%= search %>"
+        >
+
+        <input
+            type="text"
+            name="ville"
+            placeholder="Ville"
+            value="<%= ville %>"
+        >
+
+        <input
+            type="text"
+            name="typeContrat"
+            placeholder="Type de contrat"
+            value="<%= typeContrat %>"
+        >
+
+        <input
+            type="text"
+            name="technologie"
+            placeholder="Technologie"
+            value="<%= technologie %>"
+        >
+
+        <select name="sort">
+
+            <option
+                value="desc"
+                <%= sort === "desc" ? "selected" : "" %>
+            >
+                Plus récentes
+            </option>
+
+            <option
+                value="asc"
+                <%= sort === "asc" ? "selected" : "" %>
+            >
+                Plus anciennes
+            </option>
+
+        </select>
+
+        <button type="submit">
+            Rechercher
+        </button>
+
+    </form>
+
+
+    <% if (offres.length === 0) { %>
+
+        <p>Aucune offre trouvée.</p>
+
+    <% } else { %>
+
+
+        <% offres.forEach(offre => { %>
+
+            <article>
+
+                <h2>
+                    <%= offre.titre %>
+                </h2>
+
+                <p>
+                    Entreprise :
+                    <%= offre.entreprise_name %>
+                </p>
+
+                <p>
+                    Ville :
+                    <%= offre.ville %>
+                </p>
+
+                <p>
+                    Contrat :
+                    <%= offre.typeContrat %>
+                </p>
+
+                <p>
+                    Date :
+                    <%= offre.datePublication %>
+                </p>
+
+                <p>
+                    <%= offre.descriptionCourte %>
+                </p>
+
+                <a href="/offres/<%= offre.id %>">
+                    Voir l'offre
+                </a>
+
+            </article>
+
+            <hr>
+
+        <% }) %>
+
+
+    <% } %>
+
+</body>
+
+</html>
