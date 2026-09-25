@@ -105,3 +105,64 @@ async function createOffer(req, res) {
         res.status(500).send("error in creation")
     }
 }
+
+async function showEditForm(req, res) {
+
+    try {
+
+        const id = req.params.id;
+
+
+        const [offres] = await db.execute(
+            `
+            SELECT *
+            FROM offre
+            WHERE id = ?
+            `,
+            [id]
+        );
+
+
+        if (offres.length === 0) {
+            return res.status(404).send("Offre introuvable");
+        }
+
+
+        const [entreprises] = await db.execute(`
+            SELECT *
+            FROM entreprise
+            ORDER BY name
+        `);
+
+
+        const [technologies] = await db.execute(`
+            SELECT *
+            FROM technologie
+            ORDER BY nom
+        `);
+
+
+        const [selectedTechnologies] = await db.execute(
+            `
+            SELECT technologie_id
+            FROM offre_technologie
+            WHERE offre_id = ?
+            `,
+            [id]
+        );
+
+
+        res.render("admin/edit", {
+            offre: offres[0],
+            entreprises,
+            technologies,
+            selectedTechnologies
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).send("Erreur serveur");
+    }
+}
