@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title><%= offre.titre %></title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <a href="/offres">
+        ← Retour aux offres
+    </a>
+
+
+    <h1>
+        <%= offre.titre %>
+    </h1>
+
+
+    <p>
+        Entreprise :
+        <%= offre.entreprise_name %>
+    </p>
+
+
+    <p>
+        Ville :
+        <%= offre.ville %>
+    </p>
+
+
+    <p>
+        Type de contrat :
+        <%= offre.typeContrat %>
+    </p>
+
+
+    <p>
+        Date de publication :
+        <%= offre.datePublication %>
+    </p>
+
+
+    <h2>Description</h2>
+
+    <p>
+        <%= offre.descriptionLongue %>
+    </p>
+
+
+    <h2>Profil recherché</h2>
+
+    <p>
+        <%= offre.profilRecherche %>
+    </p>
+
+
+    <h2>Technologies</h2>
+
+    <% if (technologies.length === 0) { %>
+
+        <p>Aucune technologie renseignée.</p>
+
+    <% } else { %>
+
+        <ul>
+
+            <% technologies.forEach(technologie => { %>
+
+                <li>
+                    <%= technologie.nom %>
+                </li>
+
+            <% }) %>
+
+        </ul>
+
+    <% } %>
+
+
+    <% if (offre.lienCandidature) { %>
+
+        <a href="<%= offre.lienCandidature %>">
+            Postuler
+        </a>
+
+    <% } %>
+
+</body>
+
+</html>
