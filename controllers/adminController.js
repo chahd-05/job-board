@@ -26,3 +26,20 @@ async function listOffers(req, res) {
         res.status(500).send("Erreur serveur");
     }
 }
+
+async function showCreateFrom(req, res) {
+    try {
+        const [entreprises] = await db.execute(`SELECT * FROM entreprise ORDER BY name`)
+
+        const [technologies] = await db.execute(`SELECT * FROM technologie ORDER BY nom `)
+
+        res.render("admin / create", {
+            entreprises, 
+            technologies
+        })
+    }
+    catch(error) {
+        console.log(error)
+        res.status(500).send("server error")
+    }
+}
