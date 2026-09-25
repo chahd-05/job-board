@@ -43,3 +43,65 @@ async function showCreateFrom(req, res) {
         res.status(500).send("server error")
     }
 }
+
+async function createOffer(req, res) {
+    try {
+        const {
+            entreprise_id,
+            titre, 
+            ville,
+            typeContrat,
+            datePublication,
+            descriptionCourte,
+            descriptionLongue,
+            profileRecherche,
+            lienCandidature,
+            emailContract
+        } = req.body
+
+        const [result] = await db.execute(`INSERT INTO offre (
+        entreprise_id, 
+        titre, 
+        ville, 
+        typeContrat,
+        datePublication,
+        descriptionCourte,
+        descriptionLongue,
+        profileRecherche,
+        lienCandidature,
+        emailContract
+        ) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        [entreprise_id, 
+        titre, 
+        ville, 
+        typeContrat,
+        datePublication,
+        descriptionCourte,
+        descriptionLongue,
+        profileRecherche,
+        lienCandidature,
+        emailContract]
+    )
+
+    const offerId = result.insertId
+
+    let technologieIds = req.body.technologies || []
+
+    if(!Array.isArray(technologieIds)){
+        technologieIds = [technologieIds]
+    }
+
+    for (const technologieId of technologieIds) {
+        await db.execute(`INSERT INTO offre_technologie(offer_id, technologie_id) 
+            VALUES(?, ?)`
+            [offerId, technologieId]
+        )
+    }
+    res.redirect("/admin/offres")
+    }
+    catch(error) {
+        console.log(error)
+        res.status(500).send("error in creation")
+    }
+}
