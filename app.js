@@ -1,20 +1,26 @@
-const express = require("express")
-const db = require("./config/db")
+const express = require("express");
 
-const app = express()
-app.set("view engine", "ejs")
+const app = express();
 
-const port = 3000
+const port = 3000;
+
+
+app.set("view engine", "ejs");
+
+
+app.use(express.urlencoded({ extended: true }));
+
+
+const offresRoutes = require("./routes/offres");
+
+app.use("/offres", offresRoutes);
+
 
 app.get("/", (req, res) => {
-    res.send("hello from here")
-})
+    res.send("Bienvenue sur Job Board !");
+});
+
 
 app.listen(port, () => {
-    console.log(`server is renning on: http://localhost:${port}`)
-})
-
-app.get("/offres", async(req, res) => {
-    const [rows] = await db.execute("SELECT * FROM offre")
-    res.render("offres", {offres: rows})
-})
+    console.log(`Server is running on http://localhost:${port}`);
+});
