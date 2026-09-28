@@ -1,167 +1,85 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <title>Créer une offre</title>
-
-</head>
-
-<body>
-
-    <h1>Créer une offre</h1>
-
-
-    <form action="/admin/offres/create" method="POST">
-
-
-        <label>Entreprise</label>
-
-        <select name="entreprise_id" required>
-
-            <% entreprises.forEach(entreprise => { %>
-
-                <option value="<%= entreprise.id %>">
-                    <%= entreprise.name %>
-                </option>
-
-            <% }) %>
-
-        </select>
-
-
-        <br>
-
-
-        <label>Titre</label>
-
-        <input
-            type="text"
-            name="titre"
-            required
-        >
-
-
-        <br>
-
-
-        <label>Ville</label>
-
-        <input
-            type="text"
-            name="ville"
-            required
-        >
-
-
-        <br>
-
-
-        <label>Type de contrat</label>
-
-        <input
-            type="text"
-            name="typeContrat"
-            required
-        >
-
-
-        <br>
-
-
-        <label>Date de publication</label>
-
-        <input
-            type="date"
-            name="datePublication"
-            required
-        >
-
-
-        <br>
-
-
-        <label>Description courte</label>
-
-        <textarea name="descriptionCourte"></textarea>
-
-
-        <br>
-
-
-        <label>Description longue</label>
-
-        <textarea name="descriptionLongue"></textarea>
-
-
-        <br>
-
-
-        <label>Profil recherché</label>
-
-        <textarea name="profilRecherche"></textarea>
-
-
-        <br>
-
-
-        <label>Lien candidature</label>
-
-        <input
-            type="text"
-            name="lienCandidature"
-        >
-
-
-        <br>
-
-
-        <label>Email contact</label>
-
-        <input
-            type="email"
-            name="emailContact"
-        >
-
-
-        <br>
-
-
-        <label>Technologies</label>
-
-        <% technologies.forEach(technologie => { %>
-
-            <div>
-
-                <label>
-
-                    <input
-                        type="checkbox"
-                        name="technologies"
-                        value="<%= technologie.id %>"
-                    >
-
-                    <%= technologie.nom %>
-
-                </label>
-
+<%- include("../partials/header", { pageTitle: "Créer une offre" }) %>
+
+<main>
+    <section class="offer-form-section">
+        <h1>Créer une offre</h1>
+
+        <form class="offer-form" action="/admin/offres/create" method="POST">
+            <div class="form-group">
+                <label for="entreprise_id">Entreprise</label>
+                <select id="entreprise_id" name="entreprise_id" required>
+                    <% entreprises.forEach(entreprise => { %>
+                        <option value="<%= entreprise.id %>"><%= entreprise.name %></option>
+                    <% }) %>
+                </select>
             </div>
 
-        <% }) %>
+            <div class="form-group">
+                <label for="titre">Titre</label>
+                <input id="titre" type="text" name="titre" required>
+            </div>
 
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="ville">Ville</label>
+                    <input id="ville" type="text" name="ville" required>
+                </div>
+                <div class="form-group">
+                    <label for="typeContrat">Type de contrat</label>
+                    <input id="typeContrat" type="text" name="typeContrat" required>
+                </div>
+            </div>
 
-        <br>
+            <div class="form-group">
+                <label for="datePublication">Date de publication</label>
+                <input id="datePublication" type="date" name="datePublication" required>
+            </div>
 
+            <div class="form-group">
+                <label for="descriptionCourte">Description courte</label>
+                <textarea id="descriptionCourte" name="descriptionCourte"></textarea>
+            </div>
 
-        <button type="submit">
-            Créer
-        </button>
+            <div class="form-group">
+                <label for="descriptionLongue">Description longue</label>
+                <textarea id="descriptionLongue" name="descriptionLongue"></textarea>
+            </div>
 
+            <div class="form-group">
+                <label for="profilRecherche">Profil recherché</label>
+                <textarea id="profilRecherche" name="profilRecherche"></textarea>
+            </div>
 
-    </form>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="lienCandidature">Lien candidature</label>
+                    <input id="lienCandidature" type="text" name="lienCandidature">
+                </div>
+                <div class="form-group">
+                    <label for="emailContact">Email contact</label>
+                    <input id="emailContact" type="email" name="emailContact">
+                </div>
+            </div>
 
-</body>
+            <div class="form-group">
+                <p>Technologies</p>
+                <div class="technologies">
+                    <% technologies.forEach(technologie => { %>
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="technologies"
+                                value="<%= technologie.id %>"
+                            >
+                            <span><%= technologie.nom %></span>
+                        </label>
+                    <% }) %>
+                </div>
+            </div>
 
-</html>
+            <button class="submit-button" type="submit">Créer</button>
+        </form>
+    </section>
+</main>
+
+<%- include("../partials/footer") %>
