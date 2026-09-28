@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Créer une offre</title>
+
+</head>
+
+<body>
+
+    <h1>Créer une offre</h1>
+
+
+    <form action="/admin/offres/create" method="POST">
+
+
+        <label>Entreprise</label>
+
+        <select name="entreprise_id" required>
+
+            <% entreprises.forEach(entreprise => { %>
+
+                <option value="<%= entreprise.id %>">
+                    <%= entreprise.name %>
+                </option>
+
+            <% }) %>
+
+        </select>
+
+
+        <br>
+
+
+        <label>Titre</label>
+
+        <input
+            type="text"
+            name="titre"
+            required
+        >
+
+
+        <br>
+
+
+        <label>Ville</label>
+
+        <input
+            type="text"
+            name="ville"
+            required
+        >
+
+
+        <br>
+
+
+        <label>Type de contrat</label>
+
+        <input
+            type="text"
+            name="typeContrat"
+            required
+        >
+
+
+        <br>
+
+
+        <label>Date de publication</label>
+
+        <input
+            type="date"
+            name="datePublication"
+            required
+        >
+
+
+        <br>
+
+
+        <label>Description courte</label>
+
+        <textarea name="descriptionCourte"></textarea>
+
+
+        <br>
+
+
+        <label>Description longue</label>
+
+        <textarea name="descriptionLongue"></textarea>
+
+
+        <br>
+
+
+        <label>Profil recherché</label>
+
+        <textarea name="profilRecherche"></textarea>
+
+
+        <br>
+
+
+        <label>Lien candidature</label>
+
+        <input
+            type="text"
+            name="lienCandidature"
+        >
+
+
+        <br>
+
+
+        <label>Email contact</label>
+
+        <input
+            type="email"
+            name="emailContact"
+        >
+
+
+        <br>
+
+
+        <label>Technologies</label>
+
+        <% technologies.forEach(technologie => { %>
+
+            <div>
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="technologies"
+                        value="<%= technologie.id %>"
+                    >
+
+                    <%= technologie.nom %>
+
+                </label>
+
+            </div>
+
+        <% }) %>
+
+
+        <br>
+
+
+        <button type="submit">
+            Créer
+        </button>
+
+
+    </form>
+
+</body>
+
+</html>
