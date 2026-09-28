@@ -41,3 +41,28 @@ job-board/
 │   │── jira-export.md                # Structure du backlog Jira (Epics/Tasks)
 │   └── figma-link.md                 # Liens vers l'arborescence et les maquettes Figma
 └── README.md              # Documentation globale du projet
+```
+
+## Installation et lancement
+
+Prérequis : Node.js et une base MySQL nommée `job_board`.
+
+1. Installer les dépendances avec `npm install`.
+2. Créer un fichier `.env` à la racine à partir de `.env.example`, puis renseigner les accès MySQL.
+3. Créer les tables et données de départ avec `npm run db:reset`, ou charger les données avec `npm run db:seed` si le schéma existe déjà.
+4. Démarrer l'application avec `npm start`. En développement, utiliser `npm run dev`.
+
+## Routes principales
+
+- `/offres` : liste, recherche, filtres et tri des offres.
+- `/offres/:id` : détail d'une offre.
+- `/offres/suivies` : offres enregistrées dans le navigateur.
+- `/admin/offres` : gestion des offres.
+- `/admin/offres/create` : création d'une offre.
+- `/admin/offres/:id/edit` : modification d'une offre.
+
+## Technologies
+
+Node.js, Express, EJS, MySQL, `mysql2` et `dotenv`. Les offres suivies sont conservées dans le `localStorage` du navigateur.
+
+Les diagrammes UML et le modèle relationnel logique se trouvent dans `docs/`.
