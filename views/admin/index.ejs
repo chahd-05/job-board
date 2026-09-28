@@ -1,90 +1,50 @@
-<!DOCTYPE html>
-<html lang="fr">
+<%- include("../partials/header", { pageTitle: "Administration des offres" }) %>
 
-<head>
+<main>
+    <div class="offers-header">
+        <h1>Gestion des offres <span>(<%= offres.length %> offres)</span></h1>
+        <a class="submit-button" href="/admin/offres/create">Ajouter une offre</a>
+    </div>
 
-    <meta charset="UTF-8">
+    <% if (offres.length === 0) { %>
+        <p>Aucune offre à afficher.</p>
+    <% } else { %>
+        <div class="job-card" style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Titre</th>
+                        <th>Entreprise</th>
+                        <th>Ville</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% offres.forEach(offre => { %>
+                        <tr>
+                            <td><%= offre.id %></td>
+                            <td><%= offre.titre %></td>
+                            <td><%= offre.entreprise_name %></td>
+                            <td><%= offre.ville %></td>
+                            <td>
+                                <a class="details-button" href="/admin/offres/<%= offre.id %>/edit">
+                                    Modifier
+                                </a>
+                                <form
+                                    action="/admin/offres/<%= offre.id %>/delete"
+                                    method="POST"
+                                    style="display:inline;"
+                                >
+                                    <button class="follow-button" type="submit">Supprimer</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    <% } %>
+</main>
 
-    <title>Administration</title>
-
-</head>
-
-<body>
-
-    <h1>Gestion des offres</h1>
-
-
-    <a href="/admin/offres/create">
-        Ajouter une offre
-    </a>
-
-
-    <table border="1">
-
-        <thead>
-
-            <tr>
-                <th>ID</th>
-                <th>Titre</th>
-                <th>Entreprise</th>
-                <th>Ville</th>
-                <th>Actions</th>
-            </tr>
-
-        </thead>
-
-
-        <tbody>
-
-            <% offres.forEach(offre => { %>
-
-                <tr>
-
-                    <td>
-                        <%= offre.id %>
-                    </td>
-
-                    <td>
-                        <%= offre.titre %>
-                    </td>
-
-                    <td>
-                        <%= offre.entreprise_name %>
-                    </td>
-
-                    <td>
-                        <%= offre.ville %>
-                    </td>
-
-                    <td>
-
-                        <a href="/admin/offres/<%= offre.id %>/edit">
-                            Modifier
-                        </a>
-
-
-                        <form
-                            action="/admin/offres/<%= offre.id %>/delete"
-                            method="POST"
-                            style="display:inline;"
-                        >
-
-                            <button type="submit">
-                                Supprimer
-                            </button>
-
-                        </form>
-
-                    </td>
-
-                </tr>
-
-            <% }) %>
-
-        </tbody>
-
-    </table>
-
-</body>
-
-</html>
+<%- include("../partials/footer") %>
