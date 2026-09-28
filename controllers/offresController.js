@@ -1,131 +1,45 @@
-const db = require("../config/db");
+const offresRepository = require("../repositories/offresRepository");
 
 async function getOffers(req, res) {
     try {
-        const search = req.query.search || "";
-        const ville = req.query.ville || "";
-        const typeContrat = req.query.typeContrat || "";
-        const technologie = req.query.technologie || "";
-        const sort = req.query.sort || "desc";
+        const filters = {
+            search: req.query.search || "",
+            ville: req.query.ville || "",
+            typeContrat: req.query.typeContrat || "",
+            technologie: req.query.technologie || "",
+            sort: req.query.sort || "desc"
+        };
 
-        let sql = `
-            SELECT DISTINCT
-                offre.*,
-                entreprise.name AS entreprise_name
-            FROM offre
-            JOIN entreprise
-                ON offre.entreprise_id = entreprise.id
-            LEFT JOIN offre_technologie
-                ON offre.id = offre_technologie.offre_id
-            LEFT JOIN technologie
-                ON offre_technologie.technologie_id = technologie.id
-            WHERE 1 = 1
-        `;
-
-        const params = [];
-
-        if (search) {
-            sql += `
-                AND (
-                    offre.titre LIKE ?
-                    OR offre.descriptionCourte LIKE ?
-                    OR entreprise.name LIKE ?
-                )
-            `;
-
-            const searchValue = `%${search}%`;
-
-            params.push(
-                searchValue,
-                searchValue,
-                searchValue
-            );
-        }
-
-        if (ville) {
-            sql += ` AND offre.ville = ?`;
-            params.push(ville);
-        }
-
-        if (typeContrat) {
-            sql += ` AND offre.typeContrat = ?`;
-            params.push(typeContrat);
-        }
-
-        if (technologie) {
-            sql += ` AND technologie.nom = ?`;
-            params.push(technologie);
-        }
-
-        if (sort === "asc") {
-            sql += ` ORDER BY offre.datePublication ASC`;
-        } else {
-            sql += ` ORDER BY offre.datePublication DESC`;
-        }
-
-        const [offres] = await db.execute(sql, params);
-
-        res.render("offres/index", {
-            offres,
-            search,
-            ville,
-            typeContrat,
-            technologie,
-            sort
-        });
-
+        const offres = await offresRepository.getOffers(filters);
+        res.render("offres/index", { offres, ...filters });
     } catch (error) {
         console.error(error);
         res.status(500).send("Erreur serveur");
     }
 }
-
 
 async function getOfferDetail(req, res) {
     try {
-        const id = req.params.id;
+        const offre = await offresRepository.getOfferById(req.params.id);
 
-        const [offres] = await db.execute(
-            `
-            SELECT
-                offre.*,
-                entreprise.name AS entreprise_name
-            FROM offre
-            JOIN entreprise
-                ON offre.entreprise_id = entreprise.id
-            WHERE offre.id = ?
-            `,
-            [id]
-        );
-
-        if (offres.length === 0) {
+        if (!offre) {
             return res.status(404).send("Offre introuvable");
         }
 
-        const [technologies] = await db.execute(
-            `
-            SELECT technologie.nom
-            FROM technologie
-            JOIN offre_technologie
-                ON technologie.id = offre_technologie.technologie_id
-            WHERE offre_technologie.offre_id = ?
-            `,
-            [id]
-        );
-
-        res.render("offres/detail", {
-            offre: offres[0],
-            technologies
-        });
-
+        const technologies = await offresRepository.getOfferTechnologies(req.params.id);
+        res.render("offres/detail", { offre, technologies });
     } catch (error) {
         console.error(error);
         res.status(500).send("Erreur serveur");
     }
 }
 
+function showFollowedOffers(req, res) {
+    res.render("offres/suivies");
+}
 
 module.exports = {
     getOffers,
-    getOfferDetail
+    getOfferDetail,
+    showFollowedOffers
 };
