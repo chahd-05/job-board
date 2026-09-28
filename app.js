@@ -12,8 +12,11 @@ app.use(express.urlencoded({ extended: true }));
 
 
 const offresRoutes = require("./routes/offres");
+const adminRoutes = require("./routes/admin");
+
 
 app.use("/offres", offresRoutes);
+app.use("/admin", adminRoutes);
 
 
 app.get("/", (req, res) => {
