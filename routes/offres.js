@@ -4,11 +4,14 @@ const router = express.Router();
 
 const {
     getOffers,
-    getOfferDetail
+    getOfferDetail,
+    showFollowedOffers
 } = require("../controllers/offresController");
 
 
 router.get("/", getOffers);
+
+router.get("/suivies", showFollowedOffers);
 
 router.get("/:id", getOfferDetail);
 

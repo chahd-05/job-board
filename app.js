@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 
 const app = express();
 
@@ -9,6 +10,8 @@ app.set("view engine", "ejs");
 
 
 app.use(express.urlencoded({ extended: true }));
+app.use("/css", express.static(path.join(__dirname, "css")));
+app.use("/js", express.static(path.join(__dirname, "js")));
 
 
 const offresRoutes = require("./routes/offres");
@@ -21,6 +24,11 @@ app.use("/admin", adminRoutes);
 
 app.get("/", (req, res) => {
     res.send("Bienvenue sur Job Board !");
+});
+
+
+app.use((req, res) => {
+    res.status(404).send("Page introuvable");
 });
 
 
