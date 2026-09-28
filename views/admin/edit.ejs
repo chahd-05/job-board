@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Modifier une offre</title>
+
+</head>
+
+<body>
+
+    <h1>Modifier une offre</h1>
+
+
+    <form
+        action="/admin/offres/<%= offre.id %>/edit"
+        method="POST"
+    >
+
+
+        <label>Entreprise</label>
+
+        <select name="entreprise_id" required>
+
+            <% entreprises.forEach(entreprise => { %>
+
+                <option
+                    value="<%= entreprise.id %>"
+                    <%= entreprise.id === offre.entreprise_id ? "selected" : "" %>
+                >
+                    <%= entreprise.name %>
+                </option>
+
+            <% }) %>
+
+        </select>
+
+
+        <br>
+
+
+        <label>Titre</label>
+
+        <input
+            type="text"
+            name="titre"
+            value="<%= offre.titre %>"
+            required
+        >
+
+
+        <br>
+
+
+        <label>Ville</label>
+
+        <input
+            type="text"
+            name="ville"
+            value="<%= offre.ville %>"
+            required
+        >
+
+
+        <br>
+
+
+        <label>Type de contrat</label>
+
+        <input
+            type="text"
+            name="typeContrat"
+            value="<%= offre.typeContrat %>"
+            required
+        >
+
+
+        <br>
+
+
+        <label>Date</label>
+
+        <input
+            type="date"
+            name="datePublication"
+            value="<%= offre.datePublication.toISOString().split('T')[0] %>"
+            required
+        >
+
+
+        <br>
+
+
+        <label>Description courte</label>
+
+        <textarea name="descriptionCourte"><%= offre.descriptionCourte || "" %></textarea>
+
+
+        <br>
+
+
+        <label>Description longue</label>
+
+        <textarea name="descriptionLongue"><%= offre.descriptionLongue || "" %></textarea>
+
+
+        <br>
+
+
+        <label>Profil recherché</label>
+
+        <textarea name="profilRecherche"><%= offre.profilRecherche || "" %></textarea>
+
+
+        <br>
+
+
+        <label>Lien candidature</label>
+
+        <input
+            type="text"
+            name="lienCandidature"
+            value="<%= offre.lienCandidature || "" %>"
+        >
+
+
+        <br>
+
+
+        <label>Email contact</label>
+
+        <input
+            type="email"
+            name="emailContact"
+            value="<%= offre.emailContact || "" %>"
+        >
+
+
+        <br>
+
+
+        <label>Technologies</label>
+
+
+        <% technologies.forEach(technologie => { %>
+
+            <div>
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="technologies"
+                        value="<%= technologie.id %>"
+                        <%= selectedTechnologies.some(
+                            item => item.technologie_id === technologie.id
+                        ) ? "checked" : "" %>
+                    >
+
+                    <%= technologie.nom %>
+
+                </label>
+
+            </div>
+
+        <% }) %>
+
+
+        <br>
+
+
+        <button type="submit">
+            Enregistrer
+        </button>
+
+
+    </form>
+
+</body>
+
+</html>
