@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Administration</title>
+
+</head>
+
+<body>
+
+    <h1>Gestion des offres</h1>
+
+
+    <a href="/admin/offres/create">
+        Ajouter une offre
+    </a>
+
+
+    <table border="1">
+
+        <thead>
+
+            <tr>
+                <th>ID</th>
+                <th>Titre</th>
+                <th>Entreprise</th>
+                <th>Ville</th>
+                <th>Actions</th>
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+            <% offres.forEach(offre => { %>
+
+                <tr>
+
+                    <td>
+                        <%= offre.id %>
+                    </td>
+
+                    <td>
+                        <%= offre.titre %>
+                    </td>
+
+                    <td>
+                        <%= offre.entreprise_name %>
+                    </td>
+
+                    <td>
+                        <%= offre.ville %>
+                    </td>
+
+                    <td>
+
+                        <a href="/admin/offres/<%= offre.id %>/edit">
+                            Modifier
+                        </a>
+
+
+                        <form
+                            action="/admin/offres/<%= offre.id %>/delete"
+                            method="POST"
+                            style="display:inline;"
+                        >
+
+                            <button type="submit">
+                                Supprimer
+                            </button>
+
+                        </form>
+
+                    </td>
+
+                </tr>
+
+            <% }) %>
+
+        </tbody>
+
+    </table>
+
+</body>
+
+</html>
