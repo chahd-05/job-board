@@ -1,0 +1,13 @@
+<%- include("../partials/header", { pageTitle: "Offres suivies" }) %>
+
+<main>
+    <section class="followed-section">
+        <h1>Mes offres suivies</h1>
+        <p class="section-description">Retrouvez ici les opportunités sauvegardées dans ce navigateur.</p>
+        <p data-followed-empty>Aucune offre suivie.</p>
+        <div data-followed-list></div>
+    </section>
+</main>
+
+<script src="/js/storage.js" defer></script>
+<%- include("../partials/footer") %>

@@ -1,96 +1,57 @@
-<!DOCTYPE html>
-<html lang="fr">
+<%- include("../partials/header", { pageTitle: offre.titre }) %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<main>
+    <a class="back-link" href="/offres">Retour aux offres</a>
 
-    <title><%= offre.titre %></title>
+    <div class="job-detail">
+        <article class="job-detail-content">
+            <div class="job-detail-header">
+                <h1><%= offre.titre %></h1>
+                <span class="job-type"><%= offre.typeContrat %></span>
+            </div>
 
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+            <p class="job-info">
+                <strong>Entreprise :</strong> <%= offre.entreprise_name %> |
+                <strong>Ville :</strong> <%= offre.ville %> |
+                <strong>Publié le :</strong> <%= offre.datePublication %>
+            </p>
 
-<body>
+            <h3>Description</h3>
+            <p><%= offre.descriptionLongue %></p>
 
-    <a href="/offres">
-        ← Retour aux offres
-    </a>
+            <h3>Profil recherché</h3>
+            <p><%= offre.profilRecherche %></p>
+        </article>
 
+        <aside class="job-detail-sidebar">
+            <h3>Technologies requises</h3>
 
-    <h1>
-        <%= offre.titre %>
-    </h1>
+            <% if (technologies.length === 0) { %>
+                <p>Aucune technologie renseignée.</p>
+            <% } else { %>
+                <div class="technologies">
+                    <% technologies.forEach(technologie => { %>
+                        <span><%= technologie.nom %></span>
+                    <% }) %>
+                </div>
+            <% } %>
 
+            <h3>À propos de l'entreprise</h3>
+            <p><%= offre.entreprise_name %></p>
 
-    <p>
-        Entreprise :
-        <%= offre.entreprise_name %>
-    </p>
+            <% if (offre.lienCandidature) { %>
+                <p>
+                    <a class="apply-button" href="<%= offre.lienCandidature %>">
+                        Postuler à cette offre
+                    </a>
+                </p>
+            <% } %>
 
+            <% if (offre.emailContact) { %>
+                <p><a href="mailto:<%= offre.emailContact %>"><%= offre.emailContact %></a></p>
+            <% } %>
+        </aside>
+    </div>
+</main>
 
-    <p>
-        Ville :
-        <%= offre.ville %>
-    </p>
-
-
-    <p>
-        Type de contrat :
-        <%= offre.typeContrat %>
-    </p>
-
-
-    <p>
-        Date de publication :
-        <%= offre.datePublication %>
-    </p>
-
-
-    <h2>Description</h2>
-
-    <p>
-        <%= offre.descriptionLongue %>
-    </p>
-
-
-    <h2>Profil recherché</h2>
-
-    <p>
-        <%= offre.profilRecherche %>
-    </p>
-
-
-    <h2>Technologies</h2>
-
-    <% if (technologies.length === 0) { %>
-
-        <p>Aucune technologie renseignée.</p>
-
-    <% } else { %>
-
-        <ul>
-
-            <% technologies.forEach(technologie => { %>
-
-                <li>
-                    <%= technologie.nom %>
-                </li>
-
-            <% }) %>
-
-        </ul>
-
-    <% } %>
-
-
-    <% if (offre.lienCandidature) { %>
-
-        <a href="<%= offre.lienCandidature %>">
-            Postuler
-        </a>
-
-    <% } %>
-
-</body>
-
-</html>
+<%- include("../partials/footer") %>

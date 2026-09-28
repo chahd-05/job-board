@@ -1,24 +1,15 @@
-<!DOCTYPE html>
-<html lang="fr">
+<%- include("../partials/header", { pageTitle: "Liste des offres" }) %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<main>
 
-    <title>Liste des offres</title>
+    <section class="search-section">
+        <h2>Rechercher et filtrer les offres</h2>
 
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-
-<body>
-
-    <h1>Liste des offres</h1>
-
-
-    <form action="/offres" method="GET">
+        <form class="search-form" action="/offres" method="GET">
 
         <input
             type="text"
+            class="search-input"
             name="search"
             placeholder="Rechercher..."
             value="<%= search %>"
@@ -26,6 +17,7 @@
 
         <input
             type="text"
+            class="search-input"
             name="ville"
             placeholder="Ville"
             value="<%= ville %>"
@@ -33,6 +25,7 @@
 
         <input
             type="text"
+            class="search-input"
             name="typeContrat"
             placeholder="Type de contrat"
             value="<%= typeContrat %>"
@@ -40,12 +33,15 @@
 
         <input
             type="text"
+            class="search-input"
             name="technologie"
             placeholder="Technologie"
             value="<%= technologie %>"
         >
 
-        <select name="sort">
+        <div class="sort">
+        <label for="sort">Trier par :</label>
+        <select class="search-select" id="sort" name="sort">
 
             <option
                 value="desc"
@@ -62,13 +58,19 @@
             </option>
 
         </select>
+        </div>
 
-        <button type="submit">
+        <button class="search-button" type="submit">
             Rechercher
         </button>
 
-    </form>
+        </form>
+    </section>
 
+    <div class="offers-header">
+        <h1>Offres disponibles <span>(<%= offres.length %> opportunités)</span></h1>
+        <a class="details-button" href="/offres/suivies">Consulter mes offres suivies</a>
+    </div>
 
     <% if (offres.length === 0) { %>
 
@@ -79,49 +81,43 @@
 
         <% offres.forEach(offre => { %>
 
-            <article>
+            <article
+                class="job-card"
+                data-offer-id="<%= offre.id %>"
+                data-offer-title="<%= offre.titre %>"
+                data-offer-company="<%= offre.entreprise_name %>"
+                data-offer-city="<%= offre.ville %>"
+                data-offer-contract="<%= offre.typeContrat %>"
+            >
 
-                <h2>
-                    <%= offre.titre %>
-                </h2>
+                <div class="job-header">
+                    <div>
+                        <h3><%= offre.titre %></h3>
+                        <p><%= offre.entreprise_name %> — <%= offre.ville %></p>
+                    </div>
+                    <span class="job-type"><%= offre.typeContrat %></span>
+                </div>
 
-                <p>
-                    Entreprise :
-                    <%= offre.entreprise_name %>
-                </p>
+                <p class="job-description"><%= offre.descriptionCourte %></p>
 
-                <p>
-                    Ville :
-                    <%= offre.ville %>
-                </p>
-
-                <p>
-                    Contrat :
-                    <%= offre.typeContrat %>
-                </p>
-
-                <p>
-                    Date :
-                    <%= offre.datePublication %>
-                </p>
-
-                <p>
-                    <%= offre.descriptionCourte %>
-                </p>
-
-                <a href="/offres/<%= offre.id %>">
-                    Voir l'offre
-                </a>
+                <div class="job-footer">
+                    <small>Publié le <%= offre.datePublication %></small>
+                    <div>
+                        <button class="follow-button" type="button" data-follow-offer>
+                            Suivre
+                        </button>
+                        <a class="details-button" href="/offres/<%= offre.id %>">Consulter</a>
+                    </div>
+                </div>
 
             </article>
-
-            <hr>
 
         <% }) %>
 
 
     <% } %>
 
-</body>
+</main>
 
-</html>
+    <script src="/js/storage.js" defer></script>
+<%- include("../partials/footer") %>
